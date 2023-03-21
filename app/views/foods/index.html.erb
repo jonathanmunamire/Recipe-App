@@ -1,5 +1,5 @@
 <section class="section">
-    <button><%= link_to 'Create Food' %></button>
+    <button><%= link_to 'Create Food', "foods/new" %></button>
 
     <div class="table">
     <table style="border: 2px solid black">
@@ -14,7 +14,7 @@
       <td> <%= food.name %> </td>
       <td> <%= food.measurement_unit %> </td>
       <td> <%= food.price %>$</td>
-      <td> <%= link_to 'Delete' %> </td>
+      <td> <%= link_to 'Delete'%> </td>
     </tr>
     <% end %>
   </table>
