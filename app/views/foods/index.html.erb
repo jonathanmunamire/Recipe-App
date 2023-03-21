@@ -1,1 +1,22 @@
-<h1>Show all foods</h1>
+<section class="section">
+    <button><%= link_to 'Create Food', "foods/new" %></button>
+
+    <div class="table">
+    <table style="border: 2px solid black">
+    <thead>
+      <td> Food</td>
+      <td> Measurement Unit</td>
+      <td> Unit price</td>
+      <td> Action</td>
+    </thead>
+    <% @foods.each do |food| %>
+    <tr>
+      <td> <%= food.name %> </td>
+      <td> <%= food.measurement_unit %> </td>
+      <td> $<%= food.price %></td>
+      <td> <%= link_to 'Delete'%> </td>
+    </tr>
+    <% end %>
+  </table>
+    </div>
+</section>
