@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.includes(:recipe_foods).all
+    @recipes = Recipe.includes(:recipe_foods).all 
   end
 
   def new
