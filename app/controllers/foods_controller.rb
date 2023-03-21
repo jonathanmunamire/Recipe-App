@@ -9,7 +9,8 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.create(params.require(:food).permit(:name, :measurement_unit, :price, :quantity).merge(user_id: current_user.id))
+    @food = Food.create(params.require(:food).permit(:name, :measurement_unit, :price,
+                                                     :quantity).merge(user_id: current_user.id))
 
     respond_to do |format|
       format.html do
