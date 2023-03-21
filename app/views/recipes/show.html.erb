@@ -1,1 +1,10 @@
-<h1>Show one recipe</h1>
+<h2><%= @recipe.name %></h2>
+<section>
+  <p>Preparation time: <%= @recipe.preparation_time %> hour</p>
+  <p>Cooking time: <%= @recipe.cooking_time %> hour</p>
+  <p>ٍSteps go here...<%= @recipe.description %></p>
+  <div>
+    <button>Generating Shopping List</button>
+    <button>Add Ingredient</button>
+  </div>
+</section>
