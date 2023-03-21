@@ -2,6 +2,8 @@
     <button><%= link_to 'Create Food', "foods/new" %></button>
 
     <div class="table">
+    <% @foods.each do |food| %>
+
     <table style="border: 2px solid black">
     <thead>
       <td> Food</td>
@@ -9,14 +11,20 @@
       <td> Unit price</td>
       <td> Action</td>
     </thead>
-    <% @foods.each do |food| %>
     <tr>
       <td> <%= food.name %> </td>
       <td> <%= food.measurement_unit %> </td>
       <td> $<%= food.price %></td>
-      <td> <%= link_to 'Delete'%> </td>
+      <% if current_user.id == food.user_id %>
+      <td> <%= button_to 'Delete', food, method: :delete %> </td>
+      <% else %>
+      <td> No Action </td>
+  <% end %>
+
+
     </tr>
+    </table>
     <% end %>
-  </table>
+
     </div>
 </section>

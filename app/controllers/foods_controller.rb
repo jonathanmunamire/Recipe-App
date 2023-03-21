@@ -6,7 +6,7 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
   end
-
+  
   def create
     @food = Food.create(params.require(:food).permit(:name, :measurement_unit, :price,
                                                      :quantity).merge(user_id: current_user.id))
@@ -20,5 +20,11 @@ class FoodsController < ApplicationController
         end
       end
     end
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to foods_path
   end
 end
