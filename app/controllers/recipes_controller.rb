@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(params.require(:recipe).permit(:name, :preparation_time, :cooking_time,
-                                                          :description).merge(user_id: current_user.id))
+                                                           :description).merge(user_id: current_user.id))
 
     respond_to do |format|
       format.html do
