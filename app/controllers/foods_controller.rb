@@ -6,7 +6,7 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
   end
-  
+
   def create
     @food = Food.create(params.require(:food).permit(:name, :measurement_unit, :price,
                                                      :quantity).merge(user_id: current_user.id))
