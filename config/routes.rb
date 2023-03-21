@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     registration: 'register', edit: 'edit/profile'
   }, sign_out_via: [:get, :post]
 
-  resources :recipes, only: [:index, :show, :new, :edit, :create, :destroy]
+  resources :recipes, only: [:index, :new, :show, :edit, :create, :destroy]
   resources :users
   resources :recipe_foods
   resources :foods, only: [:index, :show, :new, :edit,:create, :destroy]

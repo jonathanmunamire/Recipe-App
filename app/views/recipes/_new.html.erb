@@ -1,0 +1,19 @@
+<h2>Rendered From Partial</h2>
+
+<%= form_with model: @recipe, url: recipes_path do |f| %>
+  <div>
+    <%= f.text_field :name, placeholder: 'Name' %>
+  </div>
+  <div>
+    <%= f.number_field :preparation_time %>
+  </div>
+  <div>
+    <%= f.number_field :cooking_time %>
+  </div>
+  <div>
+    <%= f.text_area :description, placeholder: 'Description' %>
+  </div>
+  <div>
+    <%= f.submit :submit %>
+  </div>
+<% end %>
