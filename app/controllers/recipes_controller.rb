@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find_by(id: params[:id])
+    @food_recipe = RecipeFood.where(recipe_id: @recipe.id).includes([:food])
   end
 
   def toggle_privacy
@@ -18,6 +19,12 @@ class RecipesController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+
+  def toggle_shopping_tag
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle_shopping_tag!
+    redirect_to recipe_path(@recipe)
   end
 
   def create
