@@ -16,9 +16,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.update(public: !@recipe.public)
 
-    respond_to do |format|
-      format.html
-    end
+    respond_to(&:html)
   end
 
   def toggle_shopping_tag
