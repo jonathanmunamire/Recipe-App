@@ -8,10 +8,8 @@ const form = document.getElementById("toggle_privacy_form");
 // console.log(checkBox.checked)
 checkBox.addEventListener('change', (e) => {
   if (e.target.checked == true) {
-    console.log('I am checked');
     form.submit()
   } else if (checkBox.checked == false) {
-    console.log('I am not checked');
     form.submit()
   }
 })
