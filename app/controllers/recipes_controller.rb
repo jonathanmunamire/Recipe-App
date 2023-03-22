@@ -11,6 +11,20 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by(id: params[:id])
   end
 
+  def toggle_privacy
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+
+    respond_to do |format|
+      format.html
+    end
+  end
+  # def toggle_privacy
+  #   @recipe = Recipe.find(params[:id])
+  #   @recipe.toggle_privacy!
+  #   redirect_to recipe_path(@recipe)
+  # end
+
   def create
     @recipe = Recipe.create(params.require(:recipe).permit(:name, :preparation_time, :cooking_time,
                                                            :description).merge(user_id: current_user.id))

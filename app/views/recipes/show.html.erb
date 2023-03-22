@@ -1,10 +1,22 @@
 <h2><%= @recipe.name %></h2>
-<section>
-  <p>Preparation time: <%= @recipe.preparation_time %> hour</p>
-  <p>Cooking time: <%= @recipe.cooking_time %> hour</p>
-  <p>ٍSteps go here...<%= @recipe.description %></p>
-  <div>
-    <button>Generating Shopping List</button>
-    <button>Add Ingredient</button>
+<section class='public_recipe'>
+  <div class='details'>
+    <p>Preparation time: <%= @recipe.preparation_time %> hour</p>
+    <p>Cooking time: <%= @recipe.cooking_time %> hour</p>
+    <p>ٍSteps go here...<%= @recipe.description %></p>
+    <div>
+      <button>Generating Shopping List</button>
+      <button>Add Ingredient</button>
+    </div>
+  </div>
+  <div class='toggle'>
+    <p>Public</p>
+    <label for='public_recipe' class="switch">
+      <%= check_box_tag :public_recipe, @recipe.public? ? 'checked' : nil, '', class: 'check_box' %>
+      <span class="slider round"></span>
+    </label>
+    <%= form_with url: toggle_privacy_recipe_path(@recipe), method: :put, id: 'toggle_privacy_form' do |f| %>
+      <%= f.hidden_field :recipe_id, value: @recipe.id %>
+    <% end %>
   </div>
 </section>
