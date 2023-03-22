@@ -19,11 +19,6 @@ class RecipesController < ApplicationController
       format.html
     end
   end
-  # def toggle_privacy
-  #   @recipe = Recipe.find(params[:id])
-  #   @recipe.toggle_privacy!
-  #   redirect_to recipe_path(@recipe)
-  # end
 
   def create
     @recipe = Recipe.create(params.require(:recipe).permit(:name, :preparation_time, :cooking_time,
