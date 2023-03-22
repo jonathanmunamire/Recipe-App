@@ -5,7 +5,6 @@ import "controllers"
 const checkBox = document.getElementById('public_recipe')
 const form = document.getElementById("toggle_privacy_form");
 
-// console.log(checkBox.checked)
 checkBox.addEventListener('change', (e) => {
   if (e.target.checked == true) {
     form.submit()
