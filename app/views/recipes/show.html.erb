@@ -9,18 +9,13 @@
       <button>Add Ingredient</button>
     </div>
   </div>
-  <div class='toggle'>
-    <% if current_user.id == @recipe.user_id %>
-      <p>Public</p>
-      <label for='public' class="switch">
-        <%= check_box_tag :public, @recipe.public? ? 'checked' : nil, class: 'check_box' %>
-        <span class="slider round"></span>
-      </label>
-      <%= form_with url: toggle_privacy_recipe_path(@recipe), method: :put, id: 'toggle_privacy_form' do |f| %>
-        <%= f.hidden_field :recipe_id, value: @recipe.id %>
-      <% end %>
+  <%= button_to recipe_path(@recipe.id), method: :put do %>
+    <% if @recipe.public %>
+      <i class="fa-solid fa-toggle-on btn-on" style="color: #008000;"></i>
+    <% else %>
+      <i class="fa-solid fa-toggle-off btn-off"></i>
     <% end %>
-  </div>
+  <% end %>
 </section>
 
 <section>
