@@ -10,13 +10,15 @@
     </div>
   </div>
   <div class='toggle'>
-    <p>Public</p>
-    <label for='public_recipe' class="switch">
-      <%= check_box_tag :public_recipe, @recipe.public? ? 'checked' : nil, '', class: 'check_box' %>
-      <span class="slider round"></span>
-    </label>
-    <%= form_with url: toggle_privacy_recipe_path(@recipe), method: :put, id: 'toggle_privacy_form' do |f| %>
-      <%= f.hidden_field :recipe_id, value: @recipe.id %>
+    <% if current_user.id == @recipe.user_id %>
+      <p>Public</p>
+      <label for='public_recipe' class="switch">
+        <%= check_box_tag :public_recipe, @recipe.public? ? 'checked' : nil, '', class: 'check_box' %>
+        <span class="slider round"></span>
+      </label>
+      <%= form_with url: toggle_privacy_recipe_path(@recipe), method: :put, id: 'toggle_privacy_form' do |f| %>
+        <%= f.hidden_field :recipe_id, value: @recipe.id %>
+      <% end %>
     <% end %>
   </div>
 </section>
