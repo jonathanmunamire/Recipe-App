@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :public_recipes, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  put '/recipes/:id/toggle_privacy', to: 'recipes#toggle_privacy', as: 'toggle_privacy_recipe'
+  put '/recipes/:id/toggle_shopping_tag', to: 'recipes#toggle_shopping_tag', as: 'toggle_shopping_tag'
+
   # Defines the root path route ("/")
   root "foods#index"
 end

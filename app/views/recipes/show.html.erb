@@ -1,10 +1,47 @@
 <h2><%= @recipe.name %></h2>
-<section>
-  <p>Preparation time: <%= @recipe.preparation_time %> hour</p>
-  <p>Cooking time: <%= @recipe.cooking_time %> hour</p>
-  <p>ٍSteps go here...<%= @recipe.description %></p>
-  <div>
-    <button>Generating Shopping List</button>
-    <button>Add Ingredient</button>
+<section class='public_recipe'>
+  <div class='details'>
+    <p>Preparation time: <%= @recipe.preparation_time %> hour</p>
+    <p>Cooking time: <%= @recipe.cooking_time %> hour</p>
+    <p>ٍSteps go here...<%= @recipe.description %></p>
+    <div>
+      <button>Generating Shopping List</button>
+      <button>Add Ingredient</button>
+    </div>
   </div>
+  <div class='toggle'>
+    <% if current_user.id == @recipe.user_id %>
+      <p>Public</p>
+      <label for='public_recipe' class="switch">
+        <%= check_box_tag :public_recipe, @recipe.public? ? 'checked' : nil, '', class: 'check_box' %>
+        <span class="slider round"></span>
+      </label>
+      <%= form_with url: toggle_privacy_recipe_path(@recipe), method: :put, id: 'toggle_privacy_form' do |f| %>
+        <%= f.hidden_field :recipe_id, value: @recipe.id %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @food_recipe.each do |recipe_food| %>
+        <tr id="<%= dom_id recipe_food %>">
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td><%= recipe_food.food.price * recipe_food.quantity %></td>
+          <td><%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
