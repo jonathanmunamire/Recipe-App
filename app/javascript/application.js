@@ -2,13 +2,20 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-const checkBox = document.getElementById('public_recipe')
+const checkBox = document.getElementById('public')
 const form = document.getElementById("toggle_privacy_form");
 
 checkBox.addEventListener('change', (e) => {
   if (e.target.checked == true) {
+    e.preventDefault()
     form.submit()
   } else if (checkBox.checked == false) {
-    form.submit()
+    e.preventDefault()
+    const input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", "public");
+    input.setAttribute("value", "false");
+    form.appendChild(input);
+    form.submit();
   }
 })
