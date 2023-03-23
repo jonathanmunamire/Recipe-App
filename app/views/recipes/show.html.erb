@@ -8,7 +8,7 @@
       <button>Generating Shopping List</button>
       <% if current_user.id == @recipe.user_id %>
         <button>
-          <%= link_to 'Add ingredient', new_recipe_foods_recipe_path(@recipe.id) %>
+          Add Ingredient
         </button>
       <% end %>
     </div>
