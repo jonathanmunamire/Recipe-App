@@ -7,22 +7,21 @@
     <div>
       <button>Generating Shopping List</button>
       <% if current_user.id == @recipe.user_id %>
-        <button>Add Ingredient</button>
+        <button>
+          <%= link_to 'Add ingredient', new_recipe_foods_recipe_path(@recipe.id) %>
+        </button>
       <% end %>
     </div>
   </div>
-  <div class='toggle'>
-    <% if current_user.id == @recipe.user_id %>
-      <p>Public</p>
-      <label for='public_recipe' class="switch">
-        <%= check_box_tag :public_recipe, @recipe.public? ? 'checked' : nil, '', class: 'check_box' %>
-        <span class="slider round"></span>
-      </label>
-      <%= form_with url: toggle_privacy_recipe_path(@recipe), method: :put, id: 'toggle_privacy_form' do |f| %>
-        <%= f.hidden_field :recipe_id, value: @recipe.id %>
+  <% if current_user.id == @recipe.user_id %>
+    <%= button_to recipe_path(@recipe.id), class: 'btn', method: :put do %>
+      <% if @recipe.public %>
+        <i class="fa-solid fa-toggle-on btn-on"></i>
+      <% else %>
+        <i class="fa-solid fa-toggle-off btn-off"></i>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 </section>
 
 <section>

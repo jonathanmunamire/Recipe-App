@@ -12,11 +12,10 @@ class RecipesController < ApplicationController
     @food_recipe = RecipeFood.where(recipe_id: @recipe.id).includes([:food])
   end
 
-  def toggle_privacy
+  def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(public: !@recipe.public)
-
-    respond_to(&:html)
+    redirect_to recipe_path(@recipe)
   end
 
   def toggle_shopping_tag
