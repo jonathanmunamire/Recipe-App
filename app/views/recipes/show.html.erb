@@ -6,9 +6,11 @@
     <p>ٍSteps go here...<%= @recipe.description %></p>
     <div>
       <button>Generating Shopping List</button>
-      <button>
-        <%= link_to 'Add ingredient', new_recipe_foods_recipe_path(@recipe.id) %>
-      </button>
+      <% if current_user.id == @recipe.user_id %>
+        <button>
+          <%= link_to 'Add ingredient', new_recipe_foods_recipe_path(@recipe.id) %>
+        </button>
+      <% end %>
     </div>
   </div>
   <% if current_user.id == @recipe.user_id %>
@@ -38,7 +40,11 @@
           <td><%= recipe_food.food.name %></td>
           <td><%= recipe_food.quantity %></td>
           <td><%= recipe_food.food.price * recipe_food.quantity %></td>
-          <td><%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.id == @recipe.user_id %>
+            <td><%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+            <td>No actions</td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

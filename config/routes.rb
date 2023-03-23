@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :new, :show, :update, :create, :destroy]
   resources :users
   resources :recipe_foods
-  resources :foods, only: [:index, :show, :new, :edit, :create, :destroy]
-  resources :users
+  resources :foods, only: [:index, :show, :new, :edit,:create, :destroy]
+  resources :public_recipes, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
