@@ -6,7 +6,9 @@
     <p>ٍSteps go here...<%= @recipe.description %></p>
     <div>
       <button>Generating Shopping List</button>
-      <button>Add Ingredient</button>
+      <% if current_user.id == @recipe.user_id %>
+        <button>Add Ingredient</button>
+      <% end %>
     </div>
   </div>
   <div class='toggle'>
@@ -39,7 +41,11 @@
           <td><%= recipe_food.food.name %></td>
           <td><%= recipe_food.quantity %></td>
           <td><%= recipe_food.food.price * recipe_food.quantity %></td>
-          <td><%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.id == @recipe.user_id %>
+            <td><%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+            <td>No actions</td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
