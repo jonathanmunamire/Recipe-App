@@ -22,3 +22,21 @@
 .toggle {
   display: flex;
 }
+
+.btn {
+  background-color: #fff;
+  border: none;
+}
+
+.btn-on {
+  color: #008000;
+}
+
+.btn-off {
+  color: red;
+}
+
+.btn-on,
+.btn-off {
+  font-size: 30px;
+}

@@ -10,9 +10,9 @@
     </div>
   </div>
   <% if current_user.id == @recipe.user_id %>
-    <%= button_to recipe_path(@recipe.id), method: :put do %>
+    <%= button_to recipe_path(@recipe.id), class: 'btn', method: :put do %>
       <% if @recipe.public %>
-        <i class="fa-solid fa-toggle-on btn-on" style="color: #008000;"></i>
+        <i class="fa-solid fa-toggle-on btn-on"></i>
       <% else %>
         <i class="fa-solid fa-toggle-off btn-off"></i>
       <% end %>
