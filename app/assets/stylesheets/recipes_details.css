@@ -1,0 +1,16 @@
+.details-page {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 2rem 5rem 0rem 10rem ;
+    min-height: 90vh;
+  }
+
+form.button_to {
+    border: none;
+}
+
+th {
+    background-color: #fff;
+    color: black;
+}

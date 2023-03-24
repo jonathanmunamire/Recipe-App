@@ -42,4 +42,8 @@
     padding-top: 1rem;
     overflow-x: auto;
   }
+
+  form.button_to {
+    border: none;
+}
   
