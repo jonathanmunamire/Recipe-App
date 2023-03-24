@@ -7,7 +7,7 @@ class ShoppingListsController < ApplicationController
     @recipe_foods = RecipeFood.all
 
     @recipe_foods.each do |recipe_food|
-      missing_quantity = recipe_food.quantity - recipe_food.food.quantity
+      missing_quantity = recipe_food.food.quantity - recipe_food.quantity
       @missing_foods << recipe_food
       @total_missing_count += 1
       @total_missing_price += missing_quantity * recipe_food.food.price
