@@ -35,8 +35,11 @@
       </tr>
     </thead>
     <tbody>
+      <% @food_recipe.to_a.each do |fr| %>
+        <%= fr %>
+      <% end %>
       <% @food_recipe.each do |recipe_food| %>
-        <tr id="<%= dom_id recipe_food %>">
+        <tr>
           <td><%= recipe_food.food.name %></td>
           <td><%= recipe_food.quantity %></td>
           <td><%= recipe_food.food.price * recipe_food.quantity %></td>
