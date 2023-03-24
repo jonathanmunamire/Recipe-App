@@ -1,13 +1,19 @@
 class RecipeFoodsController < ApplicationController
   def index
     @food_recipes = RecipeFood.all
-    puts "Recipe food __________ #{RecipeFood}"
   end
 
   def new
     @recipe = Recipe.find(params[:recipe_id])
-    puts "This is new action_____ #{Recipe.new}"
     @food_recipe = RecipeFood.new
+    respond_to do |format|
+      format.html { render :new, locals: { recipe: @recipe, food_recipe: @food_recipe } }
+    end
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:recipe_id])
+    @food_recipe = RecipeFood.find(params[:id])
   end
 
   def create
@@ -29,20 +35,20 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-  # def update
-  #   @food_recipe = RecipeFood.find(params[:id])
-  #   @food_recipe.update(modify_recipe_foods_param) # Pass the nested parameter here
-  #   flash[:notice] = 'you have updated the recipe food'
-  #   redirect_to recipe_path(params[:recipe_id])
-  # end
+  def update
+    @food_recipe = RecipeFood.find(params[:id])
+    @food_recipe.update(modify_recipe_foods_param) # Pass the nested parameter here
+    flash[:notice] = 'you have updated the recipe food'
+    redirect_to recipe_path(params[:recipe_id])
+  end
 
-  # def destroy
-  #   @food_recipe = RecipeFood.find(params[:id])
-  #   @recipe = @food_recipe.recipe
-  #   @food_recipe.destroy!
-  #   flash[:notice] = 'you have deleted the recipe food'
-  #   redirect_to recipe_food_recipe_path(@recipe)
-  # end
+  def destroy
+    @food_recipe = RecipeFood.find(params[:id])
+    @recipe = @food_recipe.recipe
+    @food_recipe.destroy!
+    flash[:notice] = 'you have deleted the recipe food'
+    redirect_to recipe_recipe_food_path(@recipe)
+  end
 
   private
 

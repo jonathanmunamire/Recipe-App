@@ -9,7 +9,7 @@
 
     <div>
       <%= form.label :food, class:"form-label" %><br>
-      <%= form.select :food_id, current_user.foods.map {|food| [food.name, food.id]},{ include_blank: true} , class:"form-select", selected: 1 %><br>
+      <%= form.select :food_id, current_user.foods.map {|food| [food.name, food.id]},{ include_blank: true} , class:"form-select" %><br>
     </div>
 
     <div >
