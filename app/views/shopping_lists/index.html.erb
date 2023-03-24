@@ -1,2 +1,31 @@
-<h1>ShoppingLists#index</h1>
-<p>Find me in app/views/shopping_lists/index.html.erb</p>
+<section class="shopping-list">
+    <h1 >Shopping List</h1>
+
+    <div class="header-details">
+        <p>Amount of food items to buy: <%= @total_missing_count %> </p>
+        <p>Total value of food needed: $<%= @total_missing_price %> </p>
+    </div>
+  
+    <%if @missing_foods.empty?%>
+        <p> No Shopping List </p>
+    <% else %>
+        <div class="">
+            <table style="border: 2px solid black">
+                <thead>
+                    <td>Food</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                </thead>
+                <% @missing_foods.each do |food|%>
+                    <tr>
+                        <td><%=food.food.name%></td>
+                        <td><%= food.quantity - food.food.quantity %> <%= food.food.measurement_unit%></td>
+                        <td>$ <%=food.food.price * (food.quantity - food.food.quantity) %></td>
+                    </tr>
+                <%end%>
+            </table>
+        </div>
+    <% end %>
+</section>
+
+
