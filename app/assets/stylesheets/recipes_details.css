@@ -1,16 +1,16 @@
 .details-page {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 2rem 5rem 0rem 10rem ;
-    min-height: 90vh;
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 2rem 5rem 0 10rem;
+  min-height: 90vh;
+}
 
 form.button_to {
-    border: none;
+  border: none;
 }
 
 th {
-    background-color: rgb(1, 136, 160);
-    color: #fff;
+  background-color: rgb(1, 136, 160);
+  color: #fff;
 }

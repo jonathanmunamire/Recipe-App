@@ -16,6 +16,7 @@
 body {
   background-color: rgb(1, 136, 160);
 }
+
 .public_recipe {
   display: flex;
   justify-content: space-between;
