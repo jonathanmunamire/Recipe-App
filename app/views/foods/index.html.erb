@@ -17,6 +17,11 @@
             <td> <%= food.name %> </td>
             <td> <%= food.measurement_unit %> </td>
             <td> $<%= food.price %></td>
+            <% if current_user.id == food.user_id %>
+              <td> <%= button_to 'Delete', food, method: :delete %> </td>
+            <% else %>
+              <td> No Action </td>
+            <% end %>
           </tr>
         <% end %>
       </table>
