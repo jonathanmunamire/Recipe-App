@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Recipe show page', type: :feature do
   let(:user) { create(:user) }
-  let(:recipe) { create(:recipe, user: user, public: false) }
-  let(:food) {create(:food, name: 'milk', user: user)}
+  let(:recipe) { create(:recipe, user:, public: false) }
+  let(:food) { create(:food, name: 'milk', user:) }
 
   before do
     sign_in user
@@ -26,10 +26,10 @@ RSpec.feature 'Recipe show page', type: :feature do
   end
 
   scenario 'User can delete recipe food' do
-    recipe_food = create(:recipe_food, recipe: recipe, quantity: 1, food: food)
+    recipe_food = create(:recipe_food, recipe:, quantity: 1, food:)
     visit recipe_path(recipe)
 
     expect(page).to have_content(recipe_food.food.name)
-    expect(page).to have_content("Delete")
+    expect(page).to have_content('Delete')
   end
 end
