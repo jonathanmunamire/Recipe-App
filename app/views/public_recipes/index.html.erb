@@ -1,11 +1,10 @@
 <section class="section">
     <div class="single_public_recipe">
         <% @recipes.each do |recipe| %>
-            <h2><%= recipe.name%></h2>
+            <h2><%= link_to recipe.name, recipe_path(recipe.id)%></h2>
             <p>By: <%= recipe.user.name%></p>
             <p>Total food items: <%=recipe.recipe_foods.count%></p>
-            <p>Total price: $203</p>
+            <p>Total price: $<%= recipe.recipe_foods.sum { |recipefood| recipefood.food.price * recipefood.quantity } %></p>
         <% end %>
     </div>
 </section>
-
