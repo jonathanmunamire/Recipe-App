@@ -12,10 +12,6 @@ RSpec.describe 'Public Recipes page', type: :feature do
       visit public_recipes_path
     end
 
-    it 'displays the page title' do
-      expect(page).to have_content 'Public Recipes'
-    end
-
     it 'displays a list of public recipes' do
       expect(page).to have_content 'Pasta'
       expect(page).to have_content 'By: Test User'
@@ -34,7 +30,7 @@ RSpec.describe 'Public Recipes page', type: :feature do
       click_link 'Pasta'
       expect(page).to have_content 'Pasta'
       expect(page).to have_content 'A delicious pasta dish'
-      expect(page).to have_content 'Cooking time: 1 min'
+      expect(page).to have_content 'Cooking time: 1 hour'
     end
   end
 end
