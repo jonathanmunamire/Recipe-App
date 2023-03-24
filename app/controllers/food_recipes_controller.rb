@@ -1,2 +1,0 @@
-class FoodRecipesController < ApplicationController
-end
