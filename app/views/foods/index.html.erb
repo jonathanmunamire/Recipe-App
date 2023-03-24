@@ -1,3 +1,8 @@
+<head>
+  <title>Recipe App</title>
+  <%= stylesheet_link_tag 'foods' %>
+</head>
+
 <section class="section">
   <button><%= link_to 'Create Food', "foods/new" %></button>
 
@@ -5,7 +10,7 @@
     <p>No Food Added</p>
   <% else %>
     <div class="table">
-      <table style="border: 2px solid black">
+      <table class="table">
         <thead>
           <td> Food</td>
           <td> Measurement Unit</td>
