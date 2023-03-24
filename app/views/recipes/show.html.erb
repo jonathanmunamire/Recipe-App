@@ -6,8 +6,10 @@
     <p>Description: <%= @recipe.description %></p>
     <p>ٍSteps go here...</p>
     <div>
-      <button>Generating Shopping List</button>
       <% if current_user.id == @recipe.user_id %>
+        <button>
+          <%= link_to 'Generating Shopping List', shopping_lists_path%>
+        </button>
         <button>
           <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe.id)%>
         </button>
