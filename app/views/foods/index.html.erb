@@ -1,30 +1,30 @@
 <section class="section">
-    <button><%= link_to 'Create Food', "foods/new" %></button>
+  <button><%= link_to 'Create Food', "foods/new" %></button>
 
+  <%if @foods.empty?%>
+    <p>No Food Added</p>
+  <% else %>
     <div class="table">
-    <% @foods.each do |food| %>
-
-    <table style="border: 2px solid black">
-    <thead>
-      <td> Food</td>
-      <td> Measurement Unit</td>
-      <td> Unit price</td>
-      <td> Action</td>
-    </thead>
-    <tr>
-      <td> <%= food.name %> </td>
-      <td> <%= food.measurement_unit %> </td>
-      <td> $<%= food.price %></td>
-      <% if current_user.id == food.user_id %>
-      <td> <%= button_to 'Delete', food, method: :delete %> </td>
-      <% else %>
-      <td> No Action </td>
-  <% end %>
-
-
-    </tr>
-    </table>
-    <% end %>
-
+      <table style="border: 2px solid black">
+        <thead>
+          <td> Food</td>
+          <td> Measurement Unit</td>
+          <td> Unit price</td>
+          <td> Action</td>
+        </thead>
+        <% @foods.each do |food| %>
+          <tr>
+            <td> <%= food.name %> </td>
+            <td> <%= food.measurement_unit %> </td>
+            <td> $<%= food.price %></td>
+            <% if current_user.id == food.user_id %>
+              <td> <%= button_to 'Delete', food, method: :delete %> </td>
+            <% else %>
+              <td> No Action </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
     </div>
+  <% end %>
 </section>
