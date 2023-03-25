@@ -8,8 +8,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.create(params.require(:food).permit(:name, :measurement_unit, :price,
-                                                     :quantity).merge(user_id: current_user.id))
+    @food = Food.create(food_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       format.html do
@@ -26,5 +25,11 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
     redirect_to foods_path
+  end
+
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 end
