@@ -4,8 +4,9 @@
 </head>
 
 <section class="section">
+<% @recipes.each do |recipe| %>
+
     <div class="single_public_recipe">
-        <% @recipes.each do |recipe| %>
             <div class="section1">
             <h2 class="recipe-name"><%= link_to recipe.name, recipe_path(recipe.id)%></h2>
             <p>By: <%= recipe.user.name%></p>
@@ -15,6 +16,7 @@
             <p>Total price: $<%= recipe.recipe_foods.sum { |recipefood| recipefood.food.price * recipefood.quantity } %></p>
             </div>
             
-        <% end %>
     </div>
+    <% end %>
+
 </section>
