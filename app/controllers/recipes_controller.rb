@@ -40,17 +40,16 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-  
+
     begin
       @recipe.destroy!
       flash[:notice] = 'Recipe deleted successfully.'
     rescue ActiveRecord::RecordNotFound => e
       flash[:alert] = "Failed to delete recipe: #{e.message}"
     end
-  
+
     redirect_to recipes_path
   end
-  
 
   private
 

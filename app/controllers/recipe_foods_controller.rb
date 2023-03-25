@@ -37,20 +37,20 @@ class RecipeFoodsController < ApplicationController
 
   def update
     @food_recipe = RecipeFood.find(params[:id])
-  
+
     begin
       @food_recipe.update!(modify_recipe_foods_param)
       flash[:notice] = 'You have updated the recipe food.'
     rescue ActiveRecord::RecordInvalid => e
       flash[:alert] = "Failed to update recipe food: #{e.message}"
     end
-  
+
     redirect_to recipe_path(params[:recipe_id])
-  end  
+  end
 
   def destroy
     @food_recipe = RecipeFood.find(params[:id])
-  
+
     begin
       @recipe = @food_recipe.recipe
       @food_recipe.destroy!
@@ -58,9 +58,9 @@ class RecipeFoodsController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       flash[:alert] = "Failed to delete recipe food: #{e.message}"
     end
-  
+
     redirect_to recipe_recipe_food_path(@recipe)
-  end  
+  end
 
   private
 

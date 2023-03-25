@@ -8,6 +8,7 @@
 
 form.button_to {
   border: none;
+  padding: 0;
 }
 
 th {
@@ -26,8 +27,4 @@ th {
 
 .button_public_class {
   display: flex;
-}
-
-form.button_to {
-  padding: 0;
 }
