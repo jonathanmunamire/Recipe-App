@@ -22,6 +22,7 @@
 - [📝 License](#license)
 
 # 📖 Recipe App <a name="about-project"></a>
+
 The Recipe App keeps track of all your recipes, ingredients, and inventory. It allows you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking, the app allows you to make them public so anyone can access them
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -30,7 +31,6 @@ The Recipe App was built with:
 
     - Ruby On Rails
     - PostgreSQL
-
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -114,11 +114,11 @@ You can deploy this project using:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Jonathanmunamire**
+👤 **Jonathan Munamire**
 
-- GitHub: [@githubhandle](https://github.com/jonathanmunamire)
-- Twitter: [@twitterhandle](https://twitter.com/)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/)
+- GitHub: [@jonathanmunamire](https://github.com/jonathanmunamire)
+- Twitter: [@amanimunamire](https://twitter.com/amanimunamire)
+- LinkedIn: [Jonathan Munamire](https://www.linkedin.com/in/jonathanmunamire/)
 
 👤 **Abdullateef Bello**
 
