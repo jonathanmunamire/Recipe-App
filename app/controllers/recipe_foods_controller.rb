@@ -37,18 +37,30 @@ class RecipeFoodsController < ApplicationController
 
   def update
     @food_recipe = RecipeFood.find(params[:id])
-    @food_recipe.update(modify_recipe_foods_param) # Pass the nested parameter here
-    flash[:notice] = 'you have updated the recipe food'
+  
+    begin
+      @food_recipe.update!(modify_recipe_foods_param)
+      flash[:notice] = 'You have updated the recipe food.'
+    rescue ActiveRecord::RecordInvalid => e
+      flash[:alert] = "Failed to update recipe food: #{e.message}"
+    end
+  
     redirect_to recipe_path(params[:recipe_id])
-  end
+  end  
 
   def destroy
     @food_recipe = RecipeFood.find(params[:id])
-    @recipe = @food_recipe.recipe
-    @food_recipe.destroy!
-    flash[:notice] = 'you have deleted the recipe food'
+  
+    begin
+      @recipe = @food_recipe.recipe
+      @food_recipe.destroy!
+      flash[:notice] = 'You have deleted the recipe food.'
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:alert] = "Failed to delete recipe food: #{e.message}"
+    end
+  
     redirect_to recipe_recipe_food_path(@recipe)
-  end
+  end  
 
   private
 
